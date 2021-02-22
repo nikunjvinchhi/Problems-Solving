@@ -48,7 +48,7 @@ public class Solution{
       }
       for(char in : input.toCharArray()){
          if(c[in - 'a'] < 0){
-            return count;
+            return Integer.MIN_VALUE;
          } else if(c[in - 'a'] > 0)
             count++;
          c[in - 'a']--;
