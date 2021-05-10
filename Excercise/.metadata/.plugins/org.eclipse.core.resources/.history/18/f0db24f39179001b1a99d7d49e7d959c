@@ -1,0 +1,5 @@
+package geekTrust;
+
+public interface FamilyConstants {
+
+}

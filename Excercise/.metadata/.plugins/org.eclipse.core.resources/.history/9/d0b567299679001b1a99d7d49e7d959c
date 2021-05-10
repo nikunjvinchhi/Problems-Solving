@@ -1,0 +1,28 @@
+package geekTrust;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FamilyMember {
+
+	String name;
+	Gender gender;
+	
+	FamilyMember father;
+	FamilyMember mother;
+	FamilyMember spouse;
+	
+	List<FamilyMember> children;
+
+	public FamilyMember(String name, Gender gender, FamilyMember father, FamilyMember mother, FamilyMember spouse) {
+		super();
+		this.name = name;
+		this.gender = gender;
+		this.father = father;
+		this.mother = mother;
+		this.spouse = spouse;
+		this.children = new ArrayList<>();
+	}
+	
+	
+}

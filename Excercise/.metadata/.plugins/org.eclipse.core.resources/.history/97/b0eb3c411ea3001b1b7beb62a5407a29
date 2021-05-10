@@ -1,0 +1,25 @@
+package geekTrust;
+
+public class FindTheSubString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static int findTheSubString(String s, String x) {
+		int i=0;
+		int j =0;
+		while(i < s.length()) {
+			char a = s.charAt(i);
+			char b = x.charAt(j);
+			if(a == b || b == '*') {
+				b++;
+			}else {
+				a--;
+			}
+			a++;
+		}
+		return 0;
+	}
+}

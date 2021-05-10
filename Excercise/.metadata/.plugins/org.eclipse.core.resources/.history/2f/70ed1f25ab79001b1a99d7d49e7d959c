@@ -1,0 +1,33 @@
+package geekTrust;
+
+import java.io.File;
+
+/**
+ * 
+ * @author nvinchhi
+ *
+ */
+public class Geektrust {
+
+	public static void main(String[] args) {
+		
+		//Take argument1 and process initial file.
+		Geektrust geek = new Geektrust();
+		geek.processFile(args[0], false);
+		geek.processFile(args[1], true);
+		
+	}
+
+	
+	private void processFile(String fileName, boolean isInputFile) {
+		File file = new File(fileName);
+		ProcessFiles fileProcessor = new ProcessFiles(file);
+		if(isInputFile) {
+			fileProcessor.processInputFile();
+		} else {
+			fileProcessor.processInitFile();
+		}
+	}
+
+	
+}

@@ -1,0 +1,75 @@
+package geekTrust;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class ProcessFiles implements ActionsConstants, MessageConstants {
+
+	Scanner sc;
+
+	public ProcessFiles(File file) {
+		try {
+			this.sc = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found. Please give correct file.");
+		}
+	}
+
+	public void processInputFile() {
+		while (sc.hasNextLine()) {
+			String actions = sc.nextLine();
+			runActions(actions);
+		}
+	}
+
+	private String runActions(String actions) {
+		String[] splitActions = actions.split(" ");
+		String result = "";
+		switch (splitActions[0]) {
+		case ADD_CHILD:
+			Family f = new Family();
+			result = f.addChild(splitActions[1], splitActions[2], splitActions[3]);
+			break;
+		case GET_RELATIONSHIP:
+			result = "";
+			break;
+		default:
+			result = INVALID_COMMAND;
+			break;
+		}
+		return result;
+	}
+
+	public void processInitFile() {
+		while (sc.hasNextLine()) {
+			String command = sc.nextLine();
+			initializateFamilyTree(command);
+		}
+	}
+
+	private void initializateFamilyTree(String command) {
+		String[] relations = command.split(" ");
+		String action = relations[0];
+		Family f = new Family();
+
+		switch (action) {
+
+		case ADD_FAMILY_HEAD:
+			f.addFamilyHead(relations[1], relations[2]);
+			break;
+
+		case ADD_CHILD:
+			f.addChild(relations[1], relations[2], relations[3]);
+			break;
+
+		case ADD_SPOUSE:
+			f.addSpouse(relations[1], relations[2], relations[2]);
+			break;
+
+		default:
+			break;
+		}
+
+	}
+}

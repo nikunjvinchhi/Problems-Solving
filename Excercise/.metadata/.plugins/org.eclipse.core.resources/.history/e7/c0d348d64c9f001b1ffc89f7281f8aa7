@@ -1,0 +1,13 @@
+package geekTrust;
+
+public class LongestSSWithoutRCharacters {
+
+	public static void main(String[] args) {
+
+	}
+
+	public static String longestString(String g) {
+		
+		return "";
+	}
+}

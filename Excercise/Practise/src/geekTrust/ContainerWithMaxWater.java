@@ -1,0 +1,27 @@
+package geekTrust;
+
+public class ContainerWithMaxWater {
+
+	public static void main(String[] a) {
+		calculateMaxWater(new int[] {1,8,6,2,5,4,8,3,7});
+	}
+	
+	public static void calculateMaxWater(int[] a) {
+		int i = 0;
+		int j = a.length-1;
+		int result = 0;
+		while(i < j) {
+			
+			int area = (j - i) * Math.min(a[i], a[j]);
+			
+			if(result < area)
+				result = area;
+			
+			if(a[i] < a[j])
+				i++;
+			else
+				j--;
+		}
+		System.out.println(result);
+	}
+}

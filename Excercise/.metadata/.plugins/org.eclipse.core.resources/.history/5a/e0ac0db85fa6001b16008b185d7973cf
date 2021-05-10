@@ -1,0 +1,58 @@
+package geekTrust;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CalculateProfit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<String> t = new ArrayList<>();
+		t.add("100567");
+		t.add("sales");
+		t.add("January");
+		
+		List<String> dis = new ArrayList<>();
+		dis.add("sales");
+		dis.add("1");
+		dis.add("24");
+		
+		List<String> dis1 = new ArrayList<>();
+		dis1.add("January");
+		dis1.add("1");
+		dis1.add("28");
+	}
+
+	public static void calculate(List<List<String>> products, List<List<String>> discounts) {
+		Map<String, Integer> dis = new HashMap<>();
+		Map<String, String> disType = new HashMap<>();
+
+		for (List<String> d : discounts) {
+			dis.put(d.get(0), Integer.valueOf(d.get(2)));
+			disType.put(d.get(0), d.get(1));
+		}
+		int ans = 0;
+		for (List<String> p : products) {
+			int price = Integer.parseInt(p.get(0));
+			int t = price;
+			if (p.size() > 1) {
+				for (int i = 1; i < p.size(); i++) {
+					if (p.get(i) != null && p.get(i).equalsIgnoreCase("Empty")) {
+						if (disType.get(p.get(i)).equals("1")) {
+							double pr = price;
+							double discount = dis.get(p.get(i)) * 0.01;
+							discount = discount * price;
+							pr = pr - discount;
+							price = (int) Math.round(pr);
+						}
+					}
+					t = Math.min(t, price);
+				}
+			}
+			ans += t;
+		}
+		System.out.println(ans);
+	}
+}

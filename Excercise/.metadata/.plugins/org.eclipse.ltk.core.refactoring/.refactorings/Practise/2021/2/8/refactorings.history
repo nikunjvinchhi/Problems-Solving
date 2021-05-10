@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;problemSolving.Ta&apos; to &apos;RemovalParanthesis&apos;&#x0D;&#x0A;- Original project: &apos;Practise&apos;&#x0D;&#x0A;- Original element: &apos;problemSolving.Ta&apos;&#x0D;&#x0A;- Renamed element: &apos;problemSolving.RemovalParanthesis&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Ta&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;problemSolving{Ta.java[Ta" matchStrategy="1" name="RemovalParanthesis" qualified="false" references="true" similarDeclarations="false" stamp="1613798092678" textual="false" version="1.0"/>
+</session>

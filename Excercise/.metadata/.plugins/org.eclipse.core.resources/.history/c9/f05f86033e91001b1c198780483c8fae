@@ -1,0 +1,45 @@
+package geekTrust;
+
+public class Sample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		LinkList p = null;
+		LinkList head = null;
+		LinkList t = null;
+		//create a link list
+		for(int i=1; i<=10; i++) {
+			t = new LinkList(i);
+			if(i == 1) {
+				head = t;
+			}
+			t.next = p;
+			p = t;
+		}
+		
+		//reverse Link list
+		reverse(head);
+	}
+
+	//1->2->3->4->5->6
+	private static void reverse(LinkList head) {
+		LinkList t = head;
+		LinkList prev = null;;
+		while(t != null) {
+			LinkList temp = t.next;
+			t.next = prev;
+			prev = t;
+			t = temp;
+		}
+	}
+
+
+	static class LinkList{
+		int val;
+		LinkList next;
+		
+		public LinkList(int val){
+			this.val = val;
+		}
+	}
+}

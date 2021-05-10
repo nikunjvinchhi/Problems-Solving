@@ -1,0 +1,52 @@
+package geekTrust;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class FailSafe {
+
+	public static void main(String[] args) {
+
+//		List<String> t = new ArrayList<>();
+//		t.add("1");
+//		t.add("2");
+//		Iterator<String> it = t.iterator();
+//		while(it.hasNext()) {
+//
+//			System.out.println(it.next());
+//			t.remove(0);
+//			//it.remove();
+//		}
+//System.out.println("------------------");
+//		System.out.println(t);
+//		
+//		
+		String a="test";
+		String b="settt";
+		
+		Map<Character, Integer> count = new HashMap<>();
+		for(char x : a.toCharArray()) {
+			count.put(x, count.getOrDefault(x, 0) + 1);
+		}
+		
+		for(char x : b.toCharArray()) {
+			count.put(x, count.getOrDefault(x, 0) - 1);
+		}
+		boolean found = false;
+		for(char t : count.keySet()) {
+			if(count.get(t) == 0) {
+				found = true;
+			} else {
+				found = false;
+				break;
+			}
+		}
+		if(found) {
+			System.out.println("Anagram");
+		} else {
+			System.out.println("Not Anagram");
+		}
+	}
+// test    
+// sett
+}

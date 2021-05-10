@@ -1,0 +1,14 @@
+package geekTrust;
+
+public class FindTheSubString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static int findTheSubString(String s, String x) {
+		
+		return 0;
+	}
+}

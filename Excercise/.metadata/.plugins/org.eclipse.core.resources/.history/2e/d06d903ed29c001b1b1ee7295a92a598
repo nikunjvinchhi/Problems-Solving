@@ -1,0 +1,45 @@
+package geekTrust;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DecodeWays {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s = "1123";
+		List<String> t = new ArrayList<>(); 
+		System.out.println(count(s, s.length(), t));
+
+	}
+
+	public static int count(String s, int n, List<String> tz) {
+
+		if (s.charAt(0) == '0')
+			return 0;
+
+		if (n == 0 || n == 1) {
+			return 1;
+		}
+
+		int count1 = 0;
+
+		if (s.charAt(n - 1) > '0') {
+			System.out.println(s.charAt(n - 1));
+			count1 = count(s, n - 1,tz);
+			int t = (int) (s.charAt(n - 1) - '0');
+			int z = (int) (s.charAt(n - 2) - '0');
+			z = (z * 10) + t;
+			if (z >= 10 && z <= 26) {
+				System.out.println((char)z);
+				count1 += count(s, n - 2,tz);
+			}
+		} else {
+			if (s.charAt(n - 2) == '1' || s.charAt(n - 2) == '2') {
+				System.out.println(((s.charAt(n - 2) - '0') * 10 + (s.charAt(n - 1)-'0')));
+				count1 += count(s, n - 2,tz);
+			}
+		}
+		return count1;
+	}
+}

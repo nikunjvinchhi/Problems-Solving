@@ -1,0 +1,51 @@
+package geekTrust;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PossibleOrder {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		float[] cost = new float[6];
+		cost[0] = 2.15f;
+		cost[1] = 2.75f;
+		cost[2] = 3.35f;
+		cost[3] = 3.55f;
+		cost[4] = 4.20f;
+		cost[5] = 5.80f;
+		
+		//possibleOrders(4.30f, cost);
+		
+		possibleOrders(6.45f, cost);
+		
+		//possibleOrders(5.50f, cost);
+		
+		//possibleOrders(15.05f, cost);
+		
+	}
+	
+	public static void possibleOrders(float amount, float[] cost) {
+		List<String> x = new ArrayList<>();
+		makeCombinations(amount, cost, 0, x, "");
+		System.out.println(x);
+	}
+	
+	public static void makeCombinations(float amount, float[] cost, int start, List<String> x, String g) {
+		if(amount == 0.0f) {
+			x.add(g);
+			return;
+		}
+		
+		if(start >= cost.length)
+			return;
+		
+		if(amount < 0.0f)
+			return;
+		
+		makeCombinations(amount - cost[start], cost, start, x, g + " " + cost[start]);
+		
+		makeCombinations(amount, cost, start + 1, x, g);
+	}
+
+}

@@ -1,0 +1,24 @@
+package geekTrust;
+
+public class Pizza {
+
+	//cheese
+	String cheese;
+	
+	
+}
+
+abstract class PizzaBuilder{
+	Pizza p;
+	
+	public abstract void buildPizze();
+}
+
+public class Sample23 extends PizzaBuilder{
+
+	@Override
+	public void buildPizze() {
+		
+	}
+	
+}

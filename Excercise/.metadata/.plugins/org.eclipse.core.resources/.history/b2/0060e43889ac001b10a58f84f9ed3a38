@@ -1,0 +1,35 @@
+package geekTrust;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PossibleOrder {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public static void possibleOrders(float amount, float[] cost) {
+		List<String> x = new ArrayList<>();
+		
+	}
+	
+	public static void makeCombinations(float amount, float[] cost, int start, List<String> x, String g) {
+		if(amount == 0.0) {
+			x.add(g);
+			return;
+		}
+		
+		if(start >= cost.length)
+			return;
+		
+		if(amount < 0.0)
+			return;
+		
+		makeCombinations(amount - cost[start], cost, start, x, g + " " + cost[start]);
+		
+		makeCombinations(amount, cost, start + 1, x, g);
+	}
+
+}

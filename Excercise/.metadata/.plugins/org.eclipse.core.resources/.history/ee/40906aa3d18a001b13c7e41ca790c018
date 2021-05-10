@@ -1,0 +1,35 @@
+package geekTrust;
+import java.util.*;
+public class Solution {
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        int t = input.nextInt();
+        
+        for (int ks = 1; ks <= t; ks++) {
+            System.out.println("Case #" + ks + ": " + solve(input));
+        }
+    }
+    
+    public static int solve(Scanner input){
+        int n = input.nextInt();
+        int k = input.nextInt();
+        String s = input.nextLine();
+        System.out.println(n + " " + s + " " + k );
+        int count=0;
+        for(int i=0; i<(n/2); i++){
+            if(s.charAt(i) != s.charAt(n-i-1)){
+                count++;
+            }
+        }
+        if(count == k){
+            return 0;
+        }
+        if(count < k){
+            return k-count;
+        }
+        if(count > k){
+            return count-k;
+        }
+        return 0;
+    }
+}

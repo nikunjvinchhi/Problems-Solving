@@ -1,0 +1,6 @@
+package geekTrust;
+
+public enum Gender {
+	Male,
+	Female;
+}

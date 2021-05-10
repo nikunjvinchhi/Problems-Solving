@@ -1,0 +1,12 @@
+package geekTrust;
+
+public class FamilyMember {
+
+	String name;
+	Gender gender;
+	
+	FamilyMember father;
+	FamilyMember mother;
+	
+	List<FamilyMember> children;
+}

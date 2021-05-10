@@ -1,0 +1,61 @@
+package geekTrust;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Solution1 {
+
+	public static void main(String[] args) {
+		String[] A = new String[] { "amazon", "apple", "facebook", "google", "leetcode" };
+		String[] B = new String[] { "e", "oo" };
+		System.out.println(wordSubsets(A, B));
+	}
+
+	public static List<String> wordSubsets(String[] A, String[] B) {
+		int[][] freq = new int[A.length][26];
+
+		for (int i = 0; i < A.length; i++) {
+			String x = A[i];
+			for (char c : x.toCharArray()) {
+				freq[i][c - 'a']++;
+			}
+		}
+		Set<String> set = new HashSet<>();
+		for (int i = 0; i < B.length; i++) {
+			String x = B[i];
+			int[][] freq1 = new int[A.length][26];
+
+			for (int j = 0; j < freq.length; j++) {
+				freq1[j] = Arrays.copyOf(freq[j], freq[j].length);
+				// For Java versions prior to Java 6 use the next:
+				// System.arraycopy(original[i], 0, result[i], 0, original[i].length);
+			}
+
+			for (int j = 0; j < A.length; j++) {
+				boolean found = false;
+				for (char c : x.toCharArray()) {
+					if (freq1[j][c - 'a'] > 0) {
+						freq1[j][c - 'a']--;
+						found = true;
+					} else {
+						found = false;
+						break;
+					}
+				}
+				if (found) {
+					if (i != 0) {
+						if (set.contains(A[j]))
+							set.remove(A[j]);
+					} else
+						set.add(A[j]);
+				}
+			}
+		}
+
+		return new ArrayList<String>(set);
+	}
+
+}

@@ -102,3 +102,38 @@ class Solution {
         return an;
     }
 }
+
+		[16:00,18:00],[12;00,13:00],[12:30, 14:00],[14:00,16:30]
+		[12;00,13:00],[12:30, 14:00],[14:00,16:30],[16:00,18:00]
+		[[1,2],[2,3],[3,4]]
+		12,12:30,14,16
+		13,14,16:30,18
+		
+		Start, 1
+		Start, 1
+		end,   0
+		Start,
+		end
+		Start,
+		end
+		end
+		
+		
+		
+		while(i<array.length || !t.isEmpty()){
+             if(your queue is empty){
+				//add first class start time to queue
+				time = array[i][0];//start time to consider
+             }
+			 while(i < array.length && time >= array[i][0]){//For given time add all the event to heap.
+				queue.add(array[i][1]);
+				i++;
+			 }
+			 time = queue.peek();//our next time is class end time.
+			 queue.poll();
+			 ans++;
+			 while(queue is not empty && queue.peek() < time){//remove all the class which we not able to attend
+				 queue.poll()
+			 }
+        }
+		return ans;

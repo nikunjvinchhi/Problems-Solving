@@ -1,0 +1,46 @@
+package geekTrust;
+
+public class Search {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int[] nums = new int[] {5,7,7,8,8,10};
+		searchRange(nums, 8);
+	}
+
+	public static int[] searchRange(int[] nums, int target) {
+
+		int i = 0;
+		int j = nums.length - 1;
+		int[] x = new int[2];
+		x[0] = -1;
+		x[1] = -1;
+
+		while (i < j) {
+			int mid = i + ((j - i) / 2);
+			if (target <= nums[mid]) {
+				j = mid;
+			} else {
+				i = mid + 1;
+			}
+		}
+		if (nums[i] != target)
+			return x;
+
+		x[0] = i;
+		i = 0;
+		j = nums.length - 1;
+		while (i < j) {
+			int mid = i + ((j - i) / 2);
+			if (target > nums[mid]) {
+				i = mid + 1;
+			} else {
+				j = mid;
+			}
+		}
+		x[1] = i;
+
+		return x;
+	}
+}

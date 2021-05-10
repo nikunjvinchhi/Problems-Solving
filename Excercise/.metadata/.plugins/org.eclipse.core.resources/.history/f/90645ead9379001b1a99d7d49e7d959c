@@ -1,0 +1,13 @@
+package geekTrust;
+
+/**
+ * 
+ * @author nvinchhi
+ *
+ */
+public class Geektrust {
+
+	public static void main(String[] args) {
+	}
+
+}

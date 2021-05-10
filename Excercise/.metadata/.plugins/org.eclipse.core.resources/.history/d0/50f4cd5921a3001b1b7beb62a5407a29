@@ -1,0 +1,61 @@
+package geekTrust;
+
+public class FindTheSubString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(firstOccurance("abcd", "b*d"));
+		System.out.println(firstOccurance("juliasamanthasamanthajulia", "has"));
+		System.out.println(firstOccurance("juliasamanthasamanthajulia", "ant*as"));
+		System.out.println(firstOccurance("juliasamanthasamanthajulia", "ant"));
+		
+	}
+
+	public static int firstOccurance(String s, String x) {
+		int i = 0;
+		int j = 0;
+		int start = -1;
+		while (i < s.length()) {
+			char a = s.charAt(i);
+			char b = x.charAt(j);
+			if (a == b || b == '*') {
+				if(j == 0)
+					start = i;
+				j++;
+			} else {
+				j=0;
+			}
+			if(j >= x.length())
+				break;
+			i++;
+		}
+		//return start - x.length() + 1; uncomment this and put comment on if (j == 0)
+		return start;
+	}
+	
+	public static int strStr(String haystack, String needle) {
+        if(needle == null || needle.isEmpty()){
+            return 0;
+        }
+        if(haystack == null || haystack == "" || haystack.isEmpty()){
+            return -1;
+        }
+        int a=0;
+        int b=0;
+        int c=0;
+        while(a < haystack.length()){
+            if(haystack.charAt(a) == needle.charAt(b)){
+                a++;
+                b++;
+                if(b == needle.length()){
+                    return c;
+                }
+            } else{
+                c++;
+                a=c;
+                b=0;
+            }
+        }
+        return -1;
+    }
+}

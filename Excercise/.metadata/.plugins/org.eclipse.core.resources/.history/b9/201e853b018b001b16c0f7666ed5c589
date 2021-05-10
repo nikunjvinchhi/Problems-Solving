@@ -1,0 +1,99 @@
+package geekTrust;
+import java.util.*;
+public class Solution {
+    public static void main(String[] args){
+//        Scanner input = new Scanner(System.in);
+//        int t = Integer.parseInt(input.nextLine());
+//        
+//        for (int ks = 1; ks <= t; ks++) {
+//            System.out.println("Case #" + ks + ": " + solve(input));
+//        }
+    	String s = "1073766625##2000033:1073766626##1073766627:KY##KY:218949##2000033##";
+    	removeCycleAndCheckPathValid(s.split("##"));
+    }
+    
+    
+    
+    public static void removeCycleAndCheckPathValid(String[] odPairs) {
+        List<String> t = new LinkedList<>();
+        Set<String> pairs = new HashSet<>();
+        for (String od : odPairs) {
+           pairs.add(od);
+           String[] pa = od.split(":");
+           if (pa.length == 1) {
+              t.add(pa[0]);
+           } else {
+              t.add(pa[1]);
+              t.add(pa[0]);
+           }
+        }
+        //Now this is as good as Linked list which contain a cycle and we have to remove it.
+        List<String> finals = new LinkedList<>();
+        int found = 0;
+        boolean f = false;
+        for (int i = 0; i < t.size();) {
+           for (int j = i + 1; j < t.size(); j++) {
+              if (t.get(i).equals(t.get(j))) {
+                 found = j - i;
+                 if (found >= 2) {
+                    i = j + 1;
+                    f = true;
+                    break;
+                 }
+              }
+           }
+
+           if(i >= t.size())
+        	   break;
+           
+           if (!f) {
+              finals.add(t.get(i));
+              i++;
+           } else {
+              finals.add(t.get(i));
+              finals.add(t.get(i));
+              f = false;
+           }
+        }
+        List<String> finalPairs = new LinkedList<>();
+        int i = 0;
+        f = false;
+        while (i < finals.size()) {
+           String a = f == true ? finals.get(i - 1) + ":" + finals.get(i) : finals.get(i);
+           if (pairs.contains(a)) {
+              finalPairs.add(a);
+              f = false;
+           } else {
+              f = true;
+           }
+           i++;
+        }
+        System.out.println(finalPairs);
+     }
+    
+    
+    public static int solve(Scanner input){
+    	String g = input.nextLine();
+    	String[] gt = g.split(" ");
+        int n = Integer.parseInt(gt[0]);
+        int k = Integer.parseInt(gt[1]);
+        String s = input.nextLine();
+        System.out.println(n + " " + s + " " + k );
+        int count=0;
+        for(int i=0; i<(n/2); i++){
+            if(s.charAt(i) != s.charAt(n-i-1)){
+                count++;
+            }
+        }
+        if(count == k){
+            return 0;
+        }
+        if(count < k){
+            return k-count;
+        }
+        if(count > k){
+            return count-k;
+        }
+        return 0;
+    }
+}

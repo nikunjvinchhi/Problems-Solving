@@ -1,0 +1,32 @@
+package geekTrust;
+
+public class Permutation {
+
+	public static void main(String[] args){
+		String a = "123";
+		permutation(a);
+	}
+	
+	public static void permutation(String a){
+		permut(a, 0, a.length()-1);
+	}
+	
+	public static void permut(String a, int l, int s){
+		if(l == s){
+			System.out.println(a);
+		}
+		
+		for(int i=l; i<=s; i++){
+			a = swap(a, l,i);
+			permut(a,i+1,r);
+			a = swap(a, l,i);
+		}
+	}
+	
+	public static String swap(String a, int b, int c){
+		char t = a.charAt(b);
+		a.charAt(b) = a.charAt(c);
+		a.charAt(c) = t;
+		return a;
+	}
+}

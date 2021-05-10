@@ -1,0 +1,111 @@
+package geekTrust;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Crane {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int a[] = new int[] {1,3};
+		int p[] = new int[] {2,6};
+		System.out.println(canReach(a,p,1,5));
+
+	}
+
+	public static boolean canReach(int[] a, int[] p, int b, int e) {
+		
+		List<Pair> pairs = new ArrayList<>();
+		for(int i=0; i<a.length;i++) {
+			int c = p[i] -a[i];
+			int d = p[i] +a[i];
+			pairs.add(new Pair(c,d));
+		}
+		
+		//Colleactions.sort(pairs, (x,y) -> x.x - y.x);
+		Collections.sort(pairs, (x,y) -> x.x - y.x);
+		
+		int find = 0;
+		
+		for(int i=0; i<a.length; i++) {
+			if(pairs.get(i).x <= b && pairs.get(i).y >= b) {
+				if(pairs.get(i).x <= e && pairs.get(i).y >= e) {
+					return true;
+				}
+				find = i;
+				break;
+			}
+		}
+		
+		int start = 0;
+		int in = 0;
+		if(b < e) {
+			b = pairs.get(find).y;
+			start = find+1;
+			in = 1;
+			//return found(find+1, b, e, pairs, 1, a.length);
+			
+		} else {
+			b = pairs.get(find).x;
+			start = find-1;
+			//return found(find-1, b, e, pairs, 0, a.length);
+		}
+		
+		while(start < a.length && start >= 0) {
+			if(in == 1 && pairs.get(start).x > b) {
+				return false;
+			}
+			if(in == 0 && pairs.get(start).y < b) {
+				return false;
+			}
+			if(pairs.get(start).x <= e && pairs.get(start).y >= e) {
+				return true;
+			}
+			if(pairs.get(start).x <= b && pairs.get(start).y >= b) {
+				if(in == 1) {
+					start++;
+				} else {
+					start--;
+				}
+			}
+		}
+		
+		return false;
+	}
+
+	public static boolean found(int i, int b, int e, List<Pair> pairs, int in, int n) {
+		if(i >=n || i < 0) {
+			return false;
+		}
+		if(in == 1 && pairs.get(i).x > b) {
+			return false;
+		}
+		if(in == 0 && pairs.get(i).y < b) {
+			return false;
+		}
+		if(pairs.get(i).x <= e && pairs.get(i).y >= e) {
+			return true;
+		}
+		if(pairs.get(i).x <= b && pairs.get(i).y >= b) {
+			if(in == 1) {
+				return found(i+1, pairs.get(i).y, e, pairs, in, n);
+			} else {
+				return found(i-1, pairs.get(i).x, e, pairs, in, n);
+			}
+		}
+		return false;
+	}
+	
+}
+
+class Pair{
+	int x;
+	int y;
+	
+	Pair(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+}

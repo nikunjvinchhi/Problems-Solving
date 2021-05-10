@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;geekTrust.SubStringUptoK.java&apos; to &apos;SubstringsUptoK.java&apos;&#x0D;&#x0A;- Original project: &apos;Practise&apos;&#x0D;&#x0A;- Original element: &apos;geekTrust.SubStringUptoK.java&apos;&#x0D;&#x0A;- Renamed element: &apos;geekTrust.SubstringsUptoK.java&apos;" description="Rename compilation unit &apos;SubStringUptoK.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;geekTrust{SubStringUptoK.java" name="SubstringsUptoK.java" references="false" stamp="1617373241865" version="1.0"/>
+</session>

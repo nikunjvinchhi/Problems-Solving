@@ -1,0 +1,10 @@
+package geekTrust;
+
+public class ProcessLogs {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

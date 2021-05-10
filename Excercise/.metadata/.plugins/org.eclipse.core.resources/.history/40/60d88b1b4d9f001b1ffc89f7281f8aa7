@@ -1,0 +1,45 @@
+package geekTrust;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class LongestSSWithoutRCharacters {
+
+	public static void main(String[] args) {
+		System.out.println(longestString("GEEKSFORGEEKS"));
+	}
+
+	/*
+	 * GEEKSFORGEEKS
+	 * EKSFORG
+	 * ABDEFGABEF
+	 * BDEFGA
+	 */
+	public static String longestString(String g) {
+		Map<Character, Integer> cache = new HashMap<>();
+		int s = 0;
+		int maxLen = 0;
+		int stIndex = 0;
+		for(int i=0; i<g.length(); i++) {
+			char f = g.charAt(i);
+			
+			if(!cache.containsKey(f)) {
+				cache.put(f, i);
+			} else {
+				if (s <= cache.get(f)) {
+					int len = i - s;
+					if (maxLen < len) {
+						maxLen = len;
+						stIndex = s;
+					}
+					s = cache.get(f) + 1;
+				}
+				
+				cache.replace(f, i);
+			}
+			
+			
+		}
+		return g.substring(stIndex, stIndex+maxLen-1);
+	}
+}

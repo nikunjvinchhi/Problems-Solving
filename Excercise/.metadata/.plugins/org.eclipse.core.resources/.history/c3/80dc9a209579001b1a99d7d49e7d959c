@@ -1,0 +1,32 @@
+package geekTrust;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class ProcessFiles implements RelationConstants {
+
+	Scanner sc;
+
+	public ProcessFiles(File file) {
+		try {
+			this.sc = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found. Please give correct file.");
+		}
+	}
+
+	public void processInputFile() {
+	}
+
+	public void processInitFile() {
+		while(sc.hasNextLine()) {
+			String command = sc.nextLine();
+			initializateFamilyTree(command);
+		}
+	}
+
+	private void initializateFamilyTree(String command) {
+		String[] relation = command.split(" ");
+	}
+}

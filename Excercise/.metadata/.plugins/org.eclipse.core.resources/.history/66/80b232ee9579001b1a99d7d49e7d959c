@@ -1,0 +1,8 @@
+package geekTrust;
+
+public class FamilyMember {
+
+	String name;
+	Gender gender;
+	
+}

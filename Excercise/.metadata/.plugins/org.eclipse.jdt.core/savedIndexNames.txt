@@ -1,0 +1,19 @@
+INDEX VERSION 1.130+C:\Start\Excercise\.metadata\.plugins\org.eclipse.jdt.core
+3485906896.index
+2739718563.index
+1631176122.index
+271630761.index
+776859722.index
+2555903919.index
+1573307056.index
+2086159246.index
+3466413728.index
+1262733299.index
+1054851814.index
+3675602412.index
+1175605545.index
+241520447.index
+432589533.index
+2024977629.index
+3983454389.index
+3492074509.index

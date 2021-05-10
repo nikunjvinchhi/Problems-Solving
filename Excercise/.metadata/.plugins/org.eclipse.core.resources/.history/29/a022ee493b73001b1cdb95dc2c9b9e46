@@ -1,0 +1,28 @@
+package problemSolving;
+
+import java.util.Stack;
+
+public class RemovalParanthesis {
+
+	public static void main(String[] arags) {
+		System.out.println(minRemoveToMakeValid("lee(t(c)o)de)"));
+	}
+
+	public static String minRemoveToMakeValid(String s) {
+		Stack<Character> stack2 = new Stack<Character>();
+		StringBuffer j = new StringBuffer();
+		for (int i = 0; i < s.length(); i++) {
+			Character t = s.charAt(i);
+			if (t == '(') {
+				stack2.push(')');
+				j.append(t);
+			} else if (!stack2.empty() && t == ')') {
+				j.append(')');
+				stack2.pop();
+			} else if (stack2.empty() && t != ')') {
+				j.append(t);
+			}
+		}
+		return j.toString();
+	}
+}

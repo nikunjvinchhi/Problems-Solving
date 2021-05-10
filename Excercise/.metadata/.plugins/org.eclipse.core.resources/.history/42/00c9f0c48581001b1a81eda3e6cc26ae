@@ -1,0 +1,24 @@
+package geekTrust;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class FailSafe {
+
+	public static void main(String[] args) {
+
+		List<String> t = new ArrayList<>();
+		t.add("1");
+		t.add("2");
+		for(int i =0; i<t.size();i++) {
+			t.add("3");
+		}
+//		Iterator<String> it = t.iterator();
+//		while(it.hasNext()) {
+//			//t.remove(0);
+//			//it.remove();
+//		}
+	}
+
+}

@@ -1,0 +1,47 @@
+package geekTrust;
+
+import java.util.List;
+
+public class LockableTree {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+class NTree {
+	int data;
+	NTree parent;
+	boolean locked;
+	boolean ableToLock;
+	List<NTree> children;
+
+	NTree(NTree parent) {
+		this.parent = parent;
+		this.locked = false;
+		this.ableToLock = true;
+	}
+
+	public boolean isNodeLocked(NTree node) {
+		return node.locked;
+	}
+
+	public void acquireLock(NTree node) {
+
+		if (node.locked)
+			return;
+
+		if (!node.ableToLock)
+			return;
+
+		// check ascendent/parents are not locked.
+		NTree x = node;
+		while (x != null) {
+			if (x.locked)
+				return;
+			x = x.parent;
+		}
+	}
+}
